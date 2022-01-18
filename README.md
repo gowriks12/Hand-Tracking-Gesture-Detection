@@ -4,6 +4,10 @@ Real-time hand tracking and identifying the gesture on the frame is the goal of 
 # Hand Tracking
 Hand tracking is carried out using mediapipe open source library for hand tracking. A hand tracker module is implemented using the object oriented concept. This module has functions to track hand and return land marks of the hand. The module returns 21 points as landmarks, each landmark has information of the points' X and Y coordinate in the frame. 
 
+![image](https://user-images.githubusercontent.com/82420256/150011948-414c8f52-e937-432d-bcc5-64abf99163ac.png)
+
+Source: https://google.github.io/mediapipe/solutions/hands.html
+
 Using this information, further processing is done with point 0 as the reference. With point 0 as reference, euclidean distance between point 0 and all other points are calculated. The distance data for each geature is collected. Around 30 samples for each geature is collected by running the handDetImplement.py script. This data is stored in handlandmarks.csv file. It is further used for the classification and identification.
 
 # Classification
