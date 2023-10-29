@@ -1,0 +1,9 @@
+opencv-python
+numpy
+mediapipe
+pickle-mixin
+scikit-learn
+pandas
+matplotlib
+sagemaker
+ipykernel
