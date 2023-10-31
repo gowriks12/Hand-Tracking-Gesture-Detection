@@ -1,4 +1,4 @@
-opencv-python-headless
+opencv-python==4.7
 numpy
 mediapipe
 pickle-mixin
@@ -8,4 +8,4 @@ matplotlib
 sagemaker
 ipykernel
 boto3
-pyqt5 == 5.15.10
+pyqt5 == 5.13.2
