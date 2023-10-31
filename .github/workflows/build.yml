@@ -28,7 +28,7 @@ jobs:
         run: |
           # Add your build commands here
           # For example:
-          cxfreeze gestureDetectionApp.py --target-dir dist   
+          cxfreeze gestureDetectionApp.py --target-dir Hand-Tracking-Gesture-Detection/dist   
 
       - name: Upload Executable
         uses: actions/upload-artifact@v2
