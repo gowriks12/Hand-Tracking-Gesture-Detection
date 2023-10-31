@@ -1,8 +1,4 @@
-import cv2
 import numpy as np
-import mediapipe as mp
-import time
-import handTrackingModule as hmt
 import boto3
 import sagemaker
 import json
@@ -42,41 +38,3 @@ def get_prediction(input_data):
 
     except Exception as e:
         print("Error:", e)
-
-
-# Gesture Detection in Realtime
-cTime = 0
-pTime = 0
-cap = cv2.VideoCapture(0)
-detector = hmt.HandDetector()
-while True:
-    success, img = cap.read()
-    img = cv2.flip(img, 1)
-    img = detector.findHands(img)
-    className = ""
-    lmList = detector.findPosition(img,draw=False)
-    lmDist = []
-    lmDist.append(0)
-    if len(lmList) != 0:
-        #Calculating the distance between points
-        for i in range(1, len(lmList)):
-            lmDist.append(((lmList[i][0] - lmList[0][0])**2 + (lmList[i][1] - lmList[0][1])**2)**0.5)
-        # Predict gesture
-        prediction = get_prediction([lmDist])
-
-            # print(prediction)
-#             classID = np.argmax(prediction)
-        if prediction:
-            className = prediction
-#         print(lmList[4])
-
-    cTime = time.time()
-    fps = 1 / (cTime - pTime)
-    pTime = cTime
-    cv2.putText(img, className, (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,255), 2, cv2.LINE_AA)
-    cv2.imshow("Image", img)
-    if cv2.waitKey(1) == ord('q'):
-        break
-# release the webcam and destroy all active windows
-cap.release()
-cv2.destroyAllWindows()
