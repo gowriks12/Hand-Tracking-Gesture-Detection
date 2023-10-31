@@ -1,0 +1,36 @@
+name: Build PyQt Application
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8  # Set your Python version
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt  # Install PyQt5 or any other dependencies you need
+
+      - name: Build Application
+        run: |
+          # Add your build commands here
+          # For example:
+           python gestureDetectionApp.py  # Replace with your build command
+
+      - name: Upload Executable
+        uses: actions/upload-artifact@v2
+        with:
+          name: gesture-detection
+          path: Hand-Tracking-Gesture-Detection/executable/gestureDetection.exe  # Replace with the path to your built executable
+
