@@ -16,7 +16,7 @@ classes = ['okay', 'peace','smile','thumbs up', 'thumbs down', 'heart', 'stop', 
 print(len(classes))
 classNum = 0
 
-with open('handlandmarks.csv', mode='w') as handLandmark_file:
+with open('SagemakerEndpointCreation/handlandmarks.csv', mode='w') as handLandmark_file:
     landmark_writer = csv.writer(handLandmark_file, delimiter=';', quoting=csv.QUOTE_MINIMAL)
     landmark_writer.writerow(["Landmarks", "class"])
     while True:
