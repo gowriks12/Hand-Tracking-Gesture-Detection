@@ -19,19 +19,20 @@ jobs:
           python-version: 3.8  # Set your Python version
 
       - name: Install dependencies
-        run: |          
+        run: |       
           pip install -r requirements.txt
           pip install --upgrade pyqt5_tools
+          pip install cx_Freeze
 
       - name: Build Application
         run: |
           # Add your build commands here
           # For example:
-           python gestureDetectionApp.py  # Replace with your build command
+          cxfreeze gestureDetectionApp.py --target-dir dist   
 
       - name: Upload Executable
         uses: actions/upload-artifact@v2
         with:
           name: gesture-detection
-          path: Hand-Tracking-Gesture-Detection/executable/gestureDetection.exe  # Replace with the path to your built executable
+          path: Hand-Tracking-Gesture-Detection/dist/gestureDetectionApp.exe  # Replace with the path to your built executable
 
